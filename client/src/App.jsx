@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom"
 
-import Header from "./components/header/header/Header"
-import HomePage from "./components/header/homepage/HomePage"
-import Login from "./components/header/login/Login"
-import Register from "./components/header/register/Register"
+import HomePage from "./components/homepage/HomePage"
+import Login from "./components/login/Login"
+import Register from "./components/register/Register"
 import CreateGame from "./components/create/CreateGame"
+import Header from "./components/header/Header"
 
 function App() {
 
