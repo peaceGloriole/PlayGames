@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Header from "./components/header/header/Header"
 import HomePage from "./components/header/homepage/HomePage"
 import Login from "./components/header/login/Login"
+import Register from "./components/header/register/Register"
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </main>
 
