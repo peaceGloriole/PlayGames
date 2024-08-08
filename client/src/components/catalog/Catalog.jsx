@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 export default function Catalog() {
+
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
