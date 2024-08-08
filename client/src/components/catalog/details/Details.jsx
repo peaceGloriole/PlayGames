@@ -34,8 +34,8 @@ export default function Details() {
                 </div>
 
                 <div className="buttons">
-                    <Link to="#" className="button">Edit</Link>
-                    <Link to="#" className="button">Delete</Link>
+                    <Link to="/edit" className="button">Edit</Link>
+                    <Link to="/delete" className="button">Delete</Link>
                 </div>
             </div>
 
