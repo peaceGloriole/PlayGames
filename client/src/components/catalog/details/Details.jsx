@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOneGame } from '../../../api/game-api';
 import { create } from '../../../api/comments-api';
+import Comment from './commentsDetails/CommentsDetails';
 
 export default function Details() {
     const [game, setGame] = useState({});
@@ -21,12 +22,7 @@ export default function Details() {
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
 
-        try {
-            const result = await create(gameId, user, comment);
-            console.log(result);
-        } catch (error) {
-            console.error('Error creating comment:', error);
-        }
+        await create(gameId, user, comment);
 
         setUser(``);
         setComment(``);
@@ -51,11 +47,13 @@ export default function Details() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
+                        {
+                            game.comments > 0
+                                ? game.comments.map(comment => <Comment key={comment._id} {...comment} />)
+                                : <p className="no-comment">No comments.</p>
+                        }
                     </ul>
-                    <p className="no-comment">No comments.</p>
+
                 </div>
 
                 <div className="buttons">
