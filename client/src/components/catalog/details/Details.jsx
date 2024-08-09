@@ -17,12 +17,20 @@ export default function Details() {
 
             setGame(result);
         })();
-    }, [gameId]);
+    });
 
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
 
-        await create(gameId, user, comment);
+        const data = await create(gameId, user, comment);
+
+        setGame(oldState => ({
+            ...oldState,
+            comments: {
+                ...oldState.comments,
+                [data._id]: data,
+            },
+        }));
 
         setUser(``);
         setComment(``);
@@ -48,10 +56,12 @@ export default function Details() {
                     <h2>Comments:</h2>
                     <ul>
                         {
-                            game.comments > 0
-                                ? game.comments.map(comment => <Comment key={comment._id} {...comment} />)
-                                : <p className="no-comment">No comments.</p>
-                        }
+                            game.comments && Object.values(game.comments).map(item => (
+                                <li key={item._id} className="comment">
+                                    <p>{item.username} comment: {item.text}</p>
+                                </li>
+                            ))}
+                        <p className="no-comment">No comments.</p>
                     </ul>
 
                 </div>
