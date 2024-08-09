@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOneGame } from '../../../api/game-api';
 import { create } from '../../../api/comments-api';
-import Comment from './commentsDetails/CommentsDetails';
 
 export default function Details() {
     const [game, setGame] = useState({});
@@ -17,7 +16,7 @@ export default function Details() {
 
             setGame(result);
         })();
-    });
+    }, [gameId]);
 
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
