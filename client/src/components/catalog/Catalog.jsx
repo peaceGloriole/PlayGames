@@ -6,8 +6,14 @@ export default function Catalog() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        getAllGames()
-            .then(result => setGames(result));
+        // IIFE
+        (async () => {
+            const reuslt = await getAllGames();
+
+            setGames(reuslt);
+        })();
+        // getAllGames()
+        //     .then(result => setGames(result));
     }, []);
 
     return (
