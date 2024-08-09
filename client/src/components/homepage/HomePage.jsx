@@ -8,9 +8,8 @@ export default function HomePage() {
     useEffect(() => {
         (async () => {
             const result = await getAllGames();
-            setLatestGame(result);
-            console.log(result);
 
+            setLatestGame(result.reverse().slice(0, 3));
         })();
     }, []);
 
