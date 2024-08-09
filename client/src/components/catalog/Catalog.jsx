@@ -1,6 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAllGames } from '../../api/game-api';
 
 export default function Catalog() {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        getAllGames()
+            .then(result => setGames(result));
+    }, []);
 
     return (
         <section id="catalog-page">
