@@ -8,4 +8,10 @@ export const getAllGames = async () => {
     return Object.values(result);
 }
 
+// export const getOneGame = async (id) => {
+//     const result = await request.get(`${BASE_URL}/${id}`);
+
+//     return result;
+// }
+
 export const getOneGame = (id) => request.get(`${BASE_URL}/${id}`);
