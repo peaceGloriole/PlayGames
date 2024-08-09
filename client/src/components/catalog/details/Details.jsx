@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getOneGame } from '../../../api/game-api';
+import { create } from '../../../api/comments-api';
 
 export default function Details() {
     const [game, setGame] = useState({});
+    const [user, setUser] = useState(``);
+    const [comment, setComment] = useState(``);
 
     const { gameId } = useParams();
 
@@ -14,6 +17,20 @@ export default function Details() {
             setGame(result);
         })();
     }, [gameId]);
+
+    const commentSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            const result = await create(gameId, user, comment);
+            console.log(result);
+        } catch (error) {
+            console.error('Error creating comment:', error);
+        }
+
+        setUser(``);
+        setComment(``);
+    };
 
     return (
         <section id="game-details">
@@ -49,8 +66,20 @@ export default function Details() {
 
             <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form">
-                    <textarea name="comment" placeholder="Comment......"></textarea>
+                <form className="form" onSubmit={commentSubmitHandler}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        name="username"
+                        value={user}
+                        onChange={(e) => setUser(e.target.value)}
+                    />
+                    <textarea
+                        name="comment"
+                        placeholder="Comment......"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
