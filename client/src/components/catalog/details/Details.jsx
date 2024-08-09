@@ -54,13 +54,14 @@ export default function Details() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {
-                            game.comments && Object.values(game.comments).map(item => (
+                        {Object.keys(game.comments || {}).length > 0
+                            ? Object.values(game.comments).map(item => (
                                 <li key={item._id} className="comment">
-                                    <p>{item.username} comment: {item.text}</p>
+                                    <p>{item.username} commented: {item.text}</p>
                                 </li>
-                            ))}
-                        <p className="no-comment">No comments.</p>
+                            ))
+                            : <p className="no-comment">No comments.</p>
+                        }
                     </ul>
 
                 </div>
