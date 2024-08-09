@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getAllGames } from '../../api/game-api';
+import CatalogItem from './catalogItem/CatalogItem';
 
 export default function Catalog() {
     const [games, setGames] = useState([]);
@@ -13,33 +13,11 @@ export default function Catalog() {
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Cover Fire</h2>
-                    <Link to="#" className="details-button">Details</Link>
-                </div>
-
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>Zombie lang</h2>
-                    <Link to="#" className="details-button">Details</Link>
-                </div>
-
-            </div>
-            <div className="allGames">
-                <div className="allGames-info">
-                    <img src="./images/avatar-1.jpg" />
-                    <h6>Action</h6>
-                    <h2>MineCraft</h2>
-                    <Link to="#" className="details-button">Details</Link>
-                </div>
-            </div>
-            <h3 className="no-articles">No articles yet</h3>
+            {
+                games.length > 0
+                    ? games.map(game => <CatalogItem key={game._id} {...game} />)
+                    : <h3 className="no-articles">No articles yet</h3>
+            }
         </section>
     );
 }
