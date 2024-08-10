@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
 export default function Header() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, email } = useContext(AuthContext);
 
     return (
         <header>
@@ -11,6 +11,7 @@ export default function Header() {
                 <Link className="home" to="/">GamesPlay</Link>
             </h1>
             <nav>
+                <h4>Welcome, {email}</h4>
                 <Link to="/games">All games</Link>
 
                 {isAuthenticated ? (
