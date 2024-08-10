@@ -10,8 +10,6 @@ export default function Details() {
     const [user, setUser] = useState(``);
     const [comment, setComment] = useState(``);
 
-
-
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
 
