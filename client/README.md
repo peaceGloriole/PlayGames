@@ -30,21 +30,21 @@
 - [x] Add comments in the component
 - [x] Clear form
 ## 6. API Hooks
-- [] Form Hook
-- [] GameAPI Hooks
+- [x] Form Hook
+- [x] GameAPI Hooks
 - [] Comment Hooks
 ## 7. Authentication
 - [] Auth API
-  - [] Login
+  - [x] Login
   - [] Register
   - [ ] Logout
 - [] Auth API hook
-  - [] Login
+  - [x] Login
   - [] Register
   - [ ] Logout
 - [] Auth state & context
-- [] Token management
-- [] Login
+- [x] Token management
+- [x] Login
 - [] Register
   - [] Add form validation
 - [ ] Logout

@@ -7,25 +7,42 @@ import CreateGame from "./components/create/CreateGame"
 import Header from "./components/header/Header"
 import Catalog from "./components/catalog/Catalog"
 import Details from "./components/catalog/details/Details"
+import { useState } from "react"
+import { AuthContext } from "./context/AuthContext"
 
 function App() {
+    const [authState, setAuthState] = useState({});
+
+    const changeAuthState = (state) => {
+        setAuthState(state);
+    };
+
+    const contextData = {
+        email: authState.email,
+        accessToken: authState.accessToken,
+        isAuthenticated: !!authState.email,
+        changeAuthState,
+    };
 
     return (
-        <div id="box">
-            <Header />
+        <AuthContext.Provider value={contextData}>
 
-            <main id="main-content">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/games" element={<Catalog />} />
-                    <Route path="/games/:gameId/details" element={<Details />} />
-                    <Route path="/games/create" element={<CreateGame />} />
-                </Routes>
-            </main>
+            <div id="box">
+                <Header />
 
-        </div>
+                <main id="main-content">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/games" element={<Catalog />} />
+                        <Route path="/games/:gameId/details" element={<Details />} />
+                        <Route path="/games/create" element={<CreateGame />} />
+                    </Routes>
+                </main>
+
+            </div>
+        </AuthContext.Provider>
     )
 }
 
