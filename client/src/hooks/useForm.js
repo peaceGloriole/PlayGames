@@ -10,5 +10,15 @@ export function useForm(initialValues) {
         }));
     };
 
-    return { values };
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        submitCallBack(values);
+    };
+
+    return {
+        values,
+        changeHandler,
+        submitHandler,
+    };
 }
