@@ -1,0 +1,23 @@
+.auth.error {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #f5c6cb; /* Border with a slightly darker red */
+    display: flex; /* Flexbox for icon and text alignment */
+    align-items: center; /* Center align items vertically */
+    gap: 10px; /* Space between icon and text */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for appearance */
+}
+
+.auth.error span {
+    flex-grow: 1; /* Make the text take up remaining space */
+    font-size: 1.2em; /* Larger text */
+    color: #721c24; /* Dark red text */
+    font-weight: bold; /* Bold text */
+}
+
+.auth.error .error-icon {
+    font-size: 20px; /* Size of the icon */
+    color: #721c24; /* Same color as the text */
+}

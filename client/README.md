@@ -36,16 +36,16 @@
 ## 7. Authentication
 - [] Auth API
   - [x] Login
-  - [] Register
+  - [x] Register
   - [ ] Logout
 - [] Auth API hook
   - [x] Login
-  - [] Register
+  - [x] Register
   - [ ] Logout
 - [] Auth state & context
 - [x] Token management
 - [x] Login
-- [] Register
+- [x] Register
   - [] Add form validation
 - [ ] Logout
 - [] Authorized Requests

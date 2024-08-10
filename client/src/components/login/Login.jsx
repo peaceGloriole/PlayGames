@@ -1,14 +1,21 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useLogin } from '../../hooks/useAuth';
+import { useState } from 'react';
 
 const initialValues = { email: ``, password: `` };
 
 export default function Login() {
+    const [error, setError] = useState(``);
     const login = useLogin();
     const navigate = useNavigate();
 
     const loginHandler = async ({ email, password }) => {
+        if (!email || !password) {
+            setError(`All fields are required!`);
+            return;
+        }
+
         try {
             await login(email, password);
 
@@ -43,6 +50,14 @@ export default function Login() {
                         name="password"
                         value={values.password}
                         onChange={changeHandler} />
+
+                    {error &&
+                        <p className="auth error">
+                            <span className="error-icon">⚠️</span>
+                            <span>{error}</span>
+                        </p>
+                    }
+
                     <input type="submit" className="btn submit" value="Login" />
                     <p className="field">
                         <span>If you don't have profile click <Link to={"/register"}>here</Link></span>
