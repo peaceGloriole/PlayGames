@@ -11,7 +11,10 @@ export default function Header() {
                 <Link className="home" to="/">GamesPlay</Link>
             </h1>
             <nav>
-                <h4>Welcome, {email}</h4>
+                {email && (
+                    <h4>Welcome, {email}</h4>
+                )}
+
                 <Link to="/games">All games</Link>
 
                 {isAuthenticated ? (

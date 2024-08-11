@@ -38,7 +38,9 @@ async function requester(method, url, data) {
 // export const put = requester.bind(null, `PUT`);
 // export const del = requester.bind(null, `DELETE`);
 
-export const get = (url, data) => requester(`GET`, url, data);
-export const post = (url, data) => requester(`POST`, url, data);
-export const put = (url, data) => requester(`PUT`, url, data);
-export const del = (url, data) => requester(`DELETE`, url, data);
+const get = (url, data) => requester(`GET`, url, data);
+const post = (url, data) => requester(`POST`, url, data);
+const put = (url, data) => requester(`PUT`, url, data);
+const del = (url, data) => requester(`DELETE`, url, data);
+
+export { get, post, put, del };
