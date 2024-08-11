@@ -7,28 +7,12 @@ import CreateGame from "./components/create/CreateGame"
 import Header from "./components/header/Header"
 import Catalog from "./components/catalog/Catalog"
 import Details from "./components/catalog/details/Details"
-import { useState } from "react"
-import { AuthContext } from "./context/AuthContext"
+import { AuthContextProvider } from "./context/AuthContext"
 
 function App() {
-    const [authState, setAuthState] = useState({});
-
-    const changeAuthState = (state) => {
-        localStorage.setItem(`accessToken`, state.accessToken);
-
-        setAuthState(state);
-    };
-
-    const contextData = {
-        userId: authState._id,
-        email: authState.email,
-        accessToken: authState.accessToken,
-        isAuthenticated: !!authState.email,
-        changeAuthState,
-    };
 
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider>
 
             <div id="box">
                 <Header />
@@ -45,7 +29,7 @@ function App() {
                 </main>
 
             </div>
-        </AuthContext.Provider>
+        </AuthContextProvider>
     )
 }
 

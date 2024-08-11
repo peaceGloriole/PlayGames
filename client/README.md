@@ -34,27 +34,27 @@
 - [x] GameAPI Hooks
 - [] Comment Hooks
 ## 7. Authentication
-- [] Auth API
+- [x] Auth API
   - [x] Login
   - [x] Register
   - [ ] Logout
-- [] Auth API hook
+- [x] Auth API hook
   - [x] Login
   - [x] Register
   - [ ] Logout
-- [] Auth state & context
+- [x] Auth state & context
 - [x] Token management
 - [x] Login
 - [x] Register
-  - [] Add form validation
+  - [x] Add form validation
 - [ ] Logout
-- [] Authorized Requests
+- [x] Authorized Requests
 ## 8. UI Implementation 
-- [] Dynamic navigation
-- [] Create game
-  - [] API function
-  - [] Hook
-- [ ] Latest games
+- [x] Dynamic navigation
+- [x] Create game
+  - [x] API function
+  - [x] Hook
+- [x] Latest games
 
 ## Notes
   1. Latest Games
