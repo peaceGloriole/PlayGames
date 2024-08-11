@@ -77,7 +77,12 @@ export default function CreateGame() {
                         placeholder="Upload a photo..." />
 
                     <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary"></textarea>
+                    <textarea
+                        name="summary"
+                        id="summary"
+                        value={values.summary}
+                        onChange={changeHandler}
+                    ></textarea>
                     <input
                         className="btn submit"
                         type="submit"
