@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 // import { create } from '../../../api/comments-api';
 import { useGetOneGame } from '../../../hooks/useGames';
 import { useForm } from '../../../hooks/useForm';
-import { useCreateComments } from '../../../hooks/useComments';
+import { useCreateComments, useGetComments } from '../../../hooks/useComments';
 import { useAuthContext } from '../../../context/AuthContext';
 
 export default function Details() {
@@ -35,6 +35,7 @@ export default function Details() {
 
     const [game] = useGetOneGame(gameId);
     const createComment = useCreateComments();
+    const [comments] = useGetComments(gameId);
     const { isAuthenticated } = useAuthContext();
 
     const { values, changeHandler, submitHandler } = useForm(initialValues, ({ comment }) => {
@@ -60,16 +61,15 @@ export default function Details() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {/* {Object.keys(game.comments || {}).length > 0
-                            ? Object.values(game.comments).map(item => (
-                                <li key={item._id} className="comment">
-                                    <p>{item.username} commented: {item.text}</p>
-                                </li>
-                            ))
-                            : <p className="no-comment">No comments.</p>
-                        } */}
+                        {comments.map(item => (
+                            <li key={item._id} className="comment">
+                                <p>Username: {item.text}</p>
+                            </li>
+                        ))
+                        }
                     </ul>
 
+                    {comments.length === 0 && <p className="no-comment">No comments.</p>}
                 </div>
 
                 <div className="buttons">

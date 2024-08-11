@@ -4,8 +4,10 @@ const BASE_URL = 'http://localhost:3030/data/comments';
 
 export const create = (gameId, text) => request.post(BASE_URL, { gameId, text });
 
-export const getAllComments = async (gameId) => {
-    const result = await request.get(BASE_URL);
+export const getAllComments = (gameId) => {
+    const params = new URLSearchParams({
+        where: `gameId="${gameId}"`
+    });
 
-    return Object.values(result);
-};
+    return request.get(`${BASE_URL}?${params.toString()}`);
+} 
