@@ -1,45 +1,33 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-// import { create } from '../../../api/comments-api';
 import { useGetOneGame } from '../../../hooks/useGames';
 import { useForm } from '../../../hooks/useForm';
 import { useCreateComments, useGetComments } from '../../../hooks/useComments';
+
 import { useAuthContext } from '../../../context/AuthContext';
 
 export default function Details() {
     const { gameId } = useParams();
-    // const [game, setGame] = useGetOneGame(gameId);
-    // const [comment, setComment] = useState(``);
-
-    // const commentSubmitHandler = async (e) => {
-    //     e.preventDefault();
-
-    //     const data = await create(gameId, comment);
-
-    //     setGame(oldState => ({
-    //         ...oldState,
-    //         comments: {
-    //             ...oldState.comments,
-    //             [data._id]: data,
-    //         },
-    //     }));
-
-    //     setUser(``);
-    //     setComment(``);
-    // };
 
     const initialValues = {
         comment: '',
     };
 
+    const [error, setError] = useState(``);
     const [game] = useGetOneGame(gameId);
     const createComment = useCreateComments();
-    const [comments] = useGetComments(gameId);
+    const [comments, setComments] = useGetComments(gameId);
     const { isAuthenticated } = useAuthContext();
 
-    const { values, changeHandler, submitHandler } = useForm(initialValues, ({ comment }) => {
-        createComment(gameId, comment);
+    const { values, changeHandler, submitHandler } = useForm(initialValues, async ({ comment }) => {
+        try {
+            const newComment = await createComment(gameId, comment);
+
+            setComments(oldComments => [...oldComments, newComment]);
+        } catch (error) {
+            setError(error.message);
+        }
     });
 
     return (
