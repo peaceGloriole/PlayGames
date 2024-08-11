@@ -55,6 +55,9 @@
   - [x] API function
   - [x] Hook
 - [x] Latest games
+## 9. Refactoring
+- [x] Extract auth state from App component
+- [x] Persist auth state
 
 ## Notes
   1. Latest Games
