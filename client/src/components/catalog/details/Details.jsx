@@ -69,6 +69,9 @@ export default function Details() {
             {isAuthenticated && (
                 <article className="create-comment">
                     <label>Add new comment:</label>
+
+                    {error && <p className="error">{error}</p>}
+
                     <form className="form" onSubmit={submitHandler}>
                         {/* onSubmit={commentSubmitHandler} */}
                         <textarea
