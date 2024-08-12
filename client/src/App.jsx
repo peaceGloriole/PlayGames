@@ -9,7 +9,7 @@ import Logout from "./components/logout/Logout"
 import CreateGame from "./components/create/CreateGame"
 import Header from "./components/header/Header"
 import Catalog from "./components/catalog/Catalog"
-import Details from "./components/catalog/details/Details"
+import Details from "./components/details/Details"
 
 function App() {
 

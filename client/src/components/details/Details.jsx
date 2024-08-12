@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { useGetOneGame } from '../../../hooks/useGames';
-import { useForm } from '../../../hooks/useForm';
-import { useCreateComments, useGetComments } from '../../../hooks/useComments';
+import { useGetOneGame } from '../../hooks/useGames';
+import { useForm } from '../../hooks/useForm';
+import { useCreateComments, useGetComments } from '../../hooks/useComments';
 
-import { useAuthContext } from '../../../context/AuthContext';
+import { useAuthContext } from '../../context/AuthContext';
 
 export default function Details() {
     const { gameId } = useParams();
