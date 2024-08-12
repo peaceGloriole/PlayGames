@@ -17,14 +17,16 @@ export default function Details() {
     const [error, setError] = useState(``);
     const [game] = useGetOneGame(gameId);
     const createComment = useCreateComments();
-    const [comments, setComments] = useGetComments(gameId);
+    const [comments, dispatch] = useGetComments(gameId);
+    const { email } = useAuthContext();
     const { isAuthenticated } = useAuthContext();
 
     const { values, changeHandler, submitHandler } = useForm(initialValues, async ({ comment }) => {
         try {
             const newComment = await createComment(gameId, comment);
 
-            setComments(oldComments => [...oldComments, newComment]);
+            // setComments(oldComments => [...oldComments, newComment]);
+            dispatch({ type: `ADD_COMMENT`, payload: { ...newComment, author: { email } } });
         } catch (error) {
             setError(error.message);
         }
