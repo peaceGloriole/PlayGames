@@ -18,7 +18,7 @@ export default function Details() {
     const [game] = useGetOneGame(gameId);
     const createComment = useCreateComments();
     const [comments, dispatch] = useGetComments(gameId);
-    const { email } = useAuthContext();
+    const { email, userId } = useAuthContext();
     const { isAuthenticated } = useAuthContext();
 
     const { values, changeHandler, submitHandler } = useForm(initialValues, async ({ comment }) => {
@@ -31,6 +31,8 @@ export default function Details() {
             setError(error.message);
         }
     });
+
+    const isOwner = game._ownerId === userId;
 
     return (
         <section id="game-details">
@@ -62,10 +64,13 @@ export default function Details() {
                     {comments.length === 0 && <p className="no-comment">No comments.</p>}
                 </div>
 
-                <div className="buttons">
-                    <Link to="/edit" className="button">Edit</Link>
-                    <Link to="/delete" className="button">Delete</Link>
-                </div>
+                {isOwner && (
+                    <div className="buttons">
+                        <Link to="/edit" className="button">Edit</Link>
+                        <Link to="/delete" className="button">Delete</Link>
+                    </div>
+                )}
+
             </div>
 
             {isAuthenticated && (
@@ -75,7 +80,6 @@ export default function Details() {
                     {error && <p className="error">{error}</p>}
 
                     <form className="form" onSubmit={submitHandler}>
-                        {/* onSubmit={commentSubmitHandler} */}
                         <textarea
                             name="comment"
                             placeholder="Comment......"

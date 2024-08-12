@@ -58,6 +58,8 @@
 ## 9. Refactoring
 - [x] Extract auth state from App component
 - [x] Persist auth state
+- [x] Comments
+- [x] Show edit/delete btns only for owner
 
 ## Notes
   1. Latest Games
