@@ -3,14 +3,6 @@ import { useForm } from "../../hooks/useForm";
 import { useGetOneGame } from "../../hooks/useGames";
 import { updateGame } from "../../api/game-api";
 
-const initialValues = {
-    title: '',
-    category: '',
-    maxLevel: '',
-    imageUrl: '',
-    summary: '',
-};
-
 export default function GameEdit() {
     const navigate = useNavigate();
     const { gameId } = useParams();
@@ -20,10 +12,10 @@ export default function GameEdit() {
         values,
         changeHandler,
         submitHandler
-    } = useForm(Object.assign(initialValues, game), async (values) => {
-        const updatedGame = await updateGame(gameId, values);
+    } = useForm(game, async (values) => {
+        await updateGame(gameId, values);
 
-        navigate(`/games/${updatedGame._id}/details`);
+        navigate(`/games/${gameId}/details`);
     });
 
     return (
