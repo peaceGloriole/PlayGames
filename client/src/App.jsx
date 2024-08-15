@@ -10,6 +10,7 @@ import CreateGame from "./components/create/CreateGame"
 import Header from "./components/header/Header"
 import Catalog from "./components/catalog/Catalog"
 import Details from "./components/details/Details"
+import GameEdit from "./components/edit/GameEdit"
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/games" element={<Catalog />} />
                         <Route path="/games/:gameId/details" element={<Details />} />
+                        <Route path="/games/:gameId/edit" element={<GameEdit />} />
                         <Route path="/games/create" element={<CreateGame />} />
                     </Routes>
                 </main>

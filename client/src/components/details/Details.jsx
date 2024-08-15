@@ -76,7 +76,7 @@ export default function Details() {
 
                 {isOwner && (
                     <div className="buttons">
-                        <Link to="/edit" className="button">Edit</Link>
+                        <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
                         <Link to="/games" onClick={gameDeleteHandler} className="button">Delete</Link>
                     </div>
                 )}

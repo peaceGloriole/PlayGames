@@ -19,3 +19,5 @@ export const getOneGame = async (id) => {
 export const createGame = (data) => request.post(`${BASE_URL}`, data);
 
 export const removeGame = (id) => request.del(`${BASE_URL}/${id}`);
+
+export const updateGame = (id, data) => request.put(`${BASE_URL}/${id}`, data);
