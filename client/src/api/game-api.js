@@ -17,3 +17,5 @@ export const getOneGame = async (id) => {
 // export const getOneGame = (id) => request.get(`${BASE_URL}/${id}`);
 
 export const createGame = (data) => request.post(`${BASE_URL}`, data);
+
+export const removeGame = (id) => request.del(`${BASE_URL}/${id}`);

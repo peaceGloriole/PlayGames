@@ -6,17 +6,18 @@ import { useForm } from '../../hooks/useForm';
 import { useCreateComments, useGetComments } from '../../hooks/useComments';
 
 import { useAuthContext } from '../../context/AuthContext';
+import { removeGame } from '../../api/game-api';
 
 export default function Details() {
-    const { gameId } = useParams();
 
     const initialValues = {
         comment: '',
     };
 
-    const [error, setError] = useState(``);
+    const { gameId } = useParams();
     const [game] = useGetOneGame(gameId);
     const createComment = useCreateComments();
+    const [error, setError] = useState(``);
     const [comments, dispatch] = useGetComments(gameId);
     const { email, userId } = useAuthContext();
     const { isAuthenticated } = useAuthContext();
@@ -31,6 +32,15 @@ export default function Details() {
             setError(error.message);
         }
     });
+
+    const gameDeleteHandler = async () => {
+        try {
+            await removeGame(gameId);
+
+        } catch (error) {
+            setError(error.message);
+        }
+    }
 
     const isOwner = game._ownerId === userId;
 
@@ -67,7 +77,7 @@ export default function Details() {
                 {isOwner && (
                     <div className="buttons">
                         <Link to="/edit" className="button">Edit</Link>
-                        <Link to="/delete" className="button">Delete</Link>
+                        <Link to="/games" onClick={gameDeleteHandler} className="button">Delete</Link>
                     </div>
                 )}
 
