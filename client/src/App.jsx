@@ -11,6 +11,7 @@ import Header from "./components/header/Header"
 import Catalog from "./components/catalog/Catalog"
 import Details from "./components/details/Details"
 import GameEdit from "./components/edit/GameEdit"
+import ViewGuard from "./guards/ViewGuard"
 
 function App() {
 
@@ -25,16 +26,18 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/logout" element={<Logout />} />
                         <Route path="/games" element={<Catalog />} />
                         <Route path="/games/:gameId/details" element={<Details />} />
-                        <Route path="/games/:gameId/edit" element={<GameEdit />} />
-                        <Route path="/games/create" element={<CreateGame />} />
+                        <Route element={<ViewGuard />} >
+                            <Route path="/games/create" element={<CreateGame />} />
+                            <Route path="/games/:gameId/edit" element={<GameEdit />} />
+                            <Route path="/logout" element={<Logout />} />
+                        </Route>
                     </Routes>
                 </main>
 
             </div>
-        </AuthContextProvider>
+        </AuthContextProvider >
     )
 }
 
