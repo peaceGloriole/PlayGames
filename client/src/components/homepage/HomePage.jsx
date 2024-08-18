@@ -9,7 +9,7 @@ export default function HomePage() {
         (async () => {
             const result = await getAllGames();
 
-            setLatestGame(result.reverse().slice(0, 3));
+            setLatestGame(result);
         })();
     }, []);
 

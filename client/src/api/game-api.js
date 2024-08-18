@@ -7,14 +7,24 @@ export const getAllGames = async () => {
 
     return Object.values(result);
 }
+// TODO: Fix Latest Games : last 3 games
+
+// export const latestGames = async () => {
+//     const urlParams = new URLSearchParams({
+//         sortBy: '_createdOn desc',
+//         pageSize: 3,
+//     });
+
+//     const result = await request.get(`${BASE_URL}?${urlParams.toString()}`)
+
+//     return Object.values(result);
+// };
 
 export const getOneGame = async (id) => {
     const result = await request.get(`${BASE_URL}/${id}`);
 
     return result;
-}
-
-// export const getOneGame = (id) => request.get(`${BASE_URL}/${id}`);
+};
 
 export const createGame = (data) => request.post(`${BASE_URL}`, data);
 
